@@ -1,417 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://sqrtyz.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-02-04T01:51:54.725Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://sqrtyz.github.io"/>
-    <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
-    <subtitle>Follow the wind, watch your back.</subtitle>
-    <logo>https://sqrtyz.github.io/images/avatar.png</logo>
-    <icon>https://sqrtyz.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[[2020 Feb] 网络流基础复习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji">
-        </link>
-        <updated>2020-02-03T14:56:15.000Z</updated>
-        <content type="html"><![CDATA[<p>尚未全部完成。无零基础内容。</p>
-<h3 id="目录">目录</h3>
-<ul>
-<li>
-<p>模板代码</p>
-</li>
-<li>
-<p>一些坑点</p>
-</li>
-<li>
-<p>定理套路</p>
-</li>
-<li>
-<p>题目分析</p>
-</li>
-</ul>
-<h3 id="模板代码">模板代码</h3>
-<h4 id="1-网络最大流">1. 网络最大流</h4>
-<p><a href="https://www.luogu.com.cn/problem/P3376">P3376 【模板】网络最大流</a><br>
-用于解决求一个网络最大流问题（<s>废话</s>）。下面使用了效率较高且实现简单的 Dinic 算法。</p>
-<p>而且貌似我并没有加「当前弧优化」也能 AC ？</p>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-#include &lt;queue&gt;
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[2019 Dec] 卷积、反演基础 学习笔记 | Gridea</title>
+<link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1580781106188">
+<link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://sqrtyz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="[2019 Dec] 卷积、反演基础 学习笔记 | Gridea - Atom Feed" href="https://sqrtyz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-#define Maxn 10010
-#define Maxm 100010
 
-using namespace std;
 
-const int INF = 0x3f3f3f;
+    <meta name="description" content="供复习，没证明。
+要开始这个知识点，首先要了解一些 数论函数。
 
-int read() {
-	int x = 0,f = 1;
-	char c = getchar();
-	while(c &lt; '0' || c &gt; '9') {
-		if(c == '-') f = -1;
-		c = getchar();
-	}
-	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
-		x = x * 10 + c - '0';
-		c = getchar();
-	}
-	return x * f;
-}
+数论函数： 定义域为正整数，值域为复数的一个子集的函数。
 
-int N,M,S,T;
+一、基本数论函数及性质
 
-struct Edge {
-	int next,to,dis;
-}
-edge[2 * Maxm];
-int head[Maxn],edge_num = 1;
 
-void add_edge(int from,int to,int dis) {
-	edge[++edge_num].next = head[from];
-	edge[edge_num].to = to;
-	edge[edge_num].dis = dis;
-	head[from] = edge_num;
-}
+元函数 ϵ(n)=[n=1]\epsilon(n)=[n=1]ϵ(n)=[n=1]
 
-queue &lt;int&gt; Q;
-int dist[Maxn];
+..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://sqrtyz.github.io">
+  <img class="avatar" src="https://sqrtyz.github.io/images/avatar.png?v=1580781106188" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    Follow the wind, watch your back.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-bool bfs() {
-	memset(dist,0,sizeof(dist));
-	while(!Q.empty()) Q.pop();
-	Q.push(S); dist[S] = 1;
-	while(!Q.empty()) {
-		int u = Q.front();
-		Q.pop();
-		for(int i = head[u];i;i = edge[i].next) {
-			int v = edge[i].to; 
-			if(!dist[v] &amp;&amp; edge[i].dis) {
-				dist[v] = dist[u] + 1;
-				Q.push(v);
-				if(v == T) return 1;
-			}
-		}
-	}
-	return 0;
-}
-
-int dinic(int u,int flow) {
-	if(u == T) return flow;
-	int rest = flow;
-	for(int i = head[u];i &amp;&amp; rest;i = edge[i].next) {
-		int v = edge[i].to;
-		if(dist[u] + 1 == dist[v] &amp;&amp; edge[i].dis) {
-			int k = dinic(v,min(rest,edge[i].dis));
-			if(!k) dist[v] = 0;
-			rest -= k;
-			edge[i].dis -= k;
-			edge[i ^ 1].dis += k;
-		} 
-	}
-	return flow - rest;
-}
-
-int main() {
-	N = read(); M = read();
-	S = read(); T = read();
-	int u,v,w;
-	for(int i = 1; i &lt;= M; i++) {
-		u = read(); v = read(); w = read();
-		add_edge(u,v,w);
-		add_edge(v,u,0);
-	}
-	int maxflow = 0, flow = 0;
-	while(bfs()) {
-		flow = dinic(S,INF);
-        maxflow += flow;
-	}
-	cout &lt;&lt; maxflow;
-	return 0;
-}
-</code></pre>
-<p>除此之外还有 EK 算法，由于效率较低再次不再赘述。但是 EK 算法也有他的用武之地。费用流的实现一般就会建立在 EK 的基础上。如下：</p>
-<h4 id="2-最小费用最大流">2. 最小费用最大流</h4>
-<p><a href="https://www.luogu.com.cn/problem/P3381">P3381 【模板】最小费用最大流</a><br>
-用于解决在 <strong>最大流的基础上</strong>，使得费用最小的问题（<s>废话</s>）。</p>
-<p>设图的边集为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>，某条边 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span> 的流量为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">f_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，费用为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">c_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，则整个图的费用定义为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>G</mi><mo>)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>e</mi><mo>∈</mo><mi>E</mi></mrow></msub><msub><mi>f</mi><mi>e</mi></msub><mo>×</mo><msub><mi>c</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">cost(G)=\sum_{e \in E } f_e \times c_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
-<p>下面是用的为 EK 算法。在最大流 EK 模板的基础上，将 bfs 部分改为 SPFA（不用 Dij 的原因是因为可能有负权）即可求解最小费用最大流。最大费用最大流同理。</p>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-#include &lt;queue&gt;
-
-#define Maxn 5010
-#define Maxm 50010
-
-using namespace std;
-
-int N, M, S, T, maxflow, ans;
-
-int read() {
-	int x = 0,f = 1;
-	char c = getchar();
-	while(c &lt; '0' || c &gt; '9') {
-		if(c == '-') f = -1;
-		c = getchar();
-	}
-	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
-		x = x * 10 + c - '0';
-		c = getchar();
-	}
-	return x * f;
-}
-
-struct Edge {
-	int next, to;
-	int dis, cost;
-}
-edge[Maxm * 2];
-int head[Maxn], edge_num = 1;
-
-void add_edge(int from, int to, int dis, int cost) {
-	edge[++edge_num].next = head[from];
-	edge[edge_num].to = to;
-	edge[edge_num].dis = dis;
-	edge[edge_num].cost = cost;
-	head[from] = edge_num;
-}
-
-int dist[Maxn], incf[Maxn], pre[Maxn];
-bool inq[Maxn];
-void init() {
-	memset(dist, 63, sizeof(dist));
-	memset(inq, 0, sizeof(inq));
-	memset(incf, 63, sizeof(incf));
-	memset(pre, 0, sizeof(pre));
-}
-bool SPFA() {
-	bool flag = 0;
-	queue &lt;int&gt; Q;
-	init();
-	Q.push(S); inq[S] = 1; dist[S] = 0;
-	while(!Q.empty()) {
-		int u = Q.front(); Q.pop(); inq[u] = 0;
-		for(int i = head[u]; i; i = edge[i].next) {
-			if(!edge[i].dis) continue;
-			int v = edge[i].to;
-			if(dist[v] &gt; dist[u] + edge[i].cost) {
-				dist[v] = dist[u] + edge[i].cost;
-				incf[v] = min(incf[u], edge[i].dis);
-				if(v == T) flag = 1;
-				pre[v] = i;
-				if(!inq[v]) {inq[v] = 1; Q.push(v);}
-			}
-		}
-	}
-	return flag;
-}
-
-void upd() {
-	int x = T;
-	while(x != S) {
-		int i = pre[x];
-		edge[i].dis -= incf[T];
-		edge[i ^ 1].dis += incf[T];
-		x = edge[i ^ 1].to;
-	}
-	maxflow += incf[T];
-	ans += dist[T] * incf[T];
-}
-
-int main() {
-	N = read(); M = read(); S = read(); T = read();
-	int u, v, c, w;
-	for(int i = 1; i &lt;= M; i++) {
-		u = read(); v = read(); c = read(); w = read();
-		add_edge(u, v, c, w);
-		add_edge(v, u, 0, -w);
-	}
-	while(SPFA()) upd();
-	cout &lt;&lt; maxflow &lt;&lt; &quot; &quot; &lt;&lt; ans &lt;&lt; endl;
-	return 0; 
-}
-</code></pre>
-<p>此外还有「有上下界网络流问题」。由于笔者太菜（暴露了）这里暂时不提。</p>
-<h3 id="一些坑点">一些坑点</h3>
-<p>此处以 Dinic 算法为例（因为最常用）。</p>
-<p>这个人怎么犯这么多傻逼错误啊 ？</p>
-<ul>
-<li>
-<p>由于要处理反向边，初始时要令 <code>edge_num</code> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
-</li>
-<li>
-<p>每次 bfs 前，<code>dist</code> 数组归零。</p>
-</li>
-<li>
-<p>这句话 <code>int k = dinic(v,min(rest,edge[i].dis));</code></p>
-<p>其中的 <code>rest</code> 一定不要写成 <code>flow</code>！（脑残几次了）</p>
-</li>
-</ul>
-<h3 id="套路定理">套路定理</h3>
-<p>比较常用的两个定理，很菜是吧。</p>
-<ul>
-<li>
-<p>最大流最小割定理</p>
-<p>众所周知，最大流 = 最小割，感性可证（?）。</p>
-</li>
-<li>
-<p>最小路径覆盖 = 点数 - 最大流</p>
-<p>请注意，此处所谓 <strong>最大流</strong> 的建图并非原图。详见模板题 <a href="https://www.luogu.com.cn/problem/P2764">P2764 最小路径覆盖问题</a>。</p>
-</li>
-</ul>
-<p>网络流的关键在于建模。以下是几个套路：</p>
-<ul>
-<li>
-<p><strong>拆点</strong> 如果遇到这样的字眼，比如「只能经过某个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 次」之类的，想到拆点。把一个点拆成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 个点，中间用一条有流量的边连接。</p>
-<p>例题：<a href="https://www.luogu.com.cn/problem/P2153">P2153 [SDOI2009] 晨跑</a></p>
-</li>
-<li>
-<p><strong>分组</strong> 其实这个有点涉及到二分图了。遇到「选出尽量多的元素，但某些元素之间不能共存」之类的问题，可以想到 <strong>最大点权独立集</strong>：</p>
-<p>先将所有元素分为互不相交的两组。建立超级源汇点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo separator="true">,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S,T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>, 把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 分别与两组中每个点相连，流量全为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ; 再将互不相容的点相连，流全为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>I</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">INF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>。假设一开始我们选取了全部元素，现在必须要删除一些元素。显然删除元素的个数即为该网络的 <strong>最小割</strong>，亦即最大流。</p>
-<p>例题：hdu1569 方格取数。</p>
-</li>
-<li>
-<p><strong>灵感建模</strong> 反正看到有关匹配「匹配」的字眼，可以考虑网络流。</p>
-<p>例题：<a href="https://www.luogu.com.cn/problem/P2756">P2756 飞行员配对方案问题</a></p>
-</li>
-</ul>
-<h3 id="题目分析">题目分析</h3>
-<p>先咕着</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[2019 Dec] 欧拉函数基础 学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji">
-        </link>
-        <updated>2020-02-03T14:55:54.000Z</updated>
-        <content type="html"><![CDATA[<p>供复习，无证明过程。</p>
-<h3 id="一-基本知识">一、基本知识</h3>
-<ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 定义为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span> 中与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 互质的整数的个数。两个数互质即最大公因数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<p>例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>2</mn><mo separator="true">,</mo><mi>φ</mi><mo>(</mo><mn>9</mn><mo>)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\varphi(3) = 2,\varphi(9) = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">9</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span></p>
-</li>
-</ul>
-<h3 id="二-一些性质">二、一些性质</h3>
-<ol>
-<li>
-<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 为质数，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\varphi(n) = n - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-</li>
-<li>
-<p><strong>欧拉函数是积性函数。</strong> 当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 互质，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>x</mi><mi>y</mi><mo>)</mo><mo>=</mo><mi>φ</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>×</mo><mi>φ</mi><mo>(</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(xy) = \varphi(x) \times \varphi(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 是奇数，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo><mo>=</mo><mi>φ</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(2x) = \varphi(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo>(</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><msub><mi>p</mi><mi>i</mi></msub></mfrac><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)=x\prod_{i=1}^n(1-\frac{1}{p_i})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∏</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.326216em;vertical-align:-0.481108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 为质数：</p>
-</li>
-</ol>
-<ul>
-<li>
-<p>若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi mathvariant="normal">∣</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">p|i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord">∣</span><span class="mord mathdefault">i</span></span></span></span>，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>i</mi><mi>p</mi><mo>)</mo><mo>=</mo><mi>φ</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>∗</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\varphi(ip) = \varphi(i) * p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span></p>
-</li>
-<li>
-<p>否则，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>i</mi><mi>p</mi><mo>)</mo><mo>=</mo><mi>φ</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>∗</mo><mo>(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(ip) = \varphi(i) * (p-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
-</li>
-</ul>
-<p>运用 4、5 两个性质，我们有：</p>
-<h3 id="三-欧拉筛">三、欧拉筛</h3>
-<h4 id="a-求单个数字的欧拉函数值">A 求单个数字的欧拉函数值</h4>
-<p>通过上面 <strong>性质4</strong>，我们可以在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 内求出一个数字的欧拉函数值。</p>
-<p>代码：下面实现了求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span> 的欧拉函数值。</p>
-<pre><code class="language-cpp">void prephi() {
-	phi = M;
-	LL m = M;
-	for(LL i = 2; i * i &lt;= m; ++i) {
-		if(!(m % i)) {
-			phi *= (i - 1);
-			phi /= i;
-			m /= i;
-		}
-		while(!(m % i)) m /= i;
-	}
-	if(m &gt; 1) {
-		phi *= (m - 1);
-		phi /= m;
-	}
-}
-</code></pre>
-<h4 id="b-欧拉筛">B 欧拉筛</h4>
-<p>通过上面 <strong>性质5</strong>，我们可以在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 内求出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的欧拉函数值。其实实现比较简单，只要在 <strong>线性筛素数</strong> 的基础上加一点。</p>
-<p>代码：下面实现了求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 的欧拉函数值。</p>
-<pre><code class="language-cpp">void prephi() {
-	memset(isp, true, sizeof(isp));
-	isp[1] = 0, phi[1] = 1;
-	for(int i = 2; i &lt;= N; i++) {
-		if(isp[i]) {
-			prime[++prime_num] = i;
-			phi[i] = i - 1;
-		}
-		for(int j = 1; j &lt;= prime_num &amp;&amp; prime[j] * i &lt;= N; j++) {
-			isp[i * prime[j]] = 0;
-			if(!(i % prime[j])) {
-				phi[i * prime[j]] = phi[i] * prime[j];
-				break;
-			}
-			else phi[i * prime[j]] = phi[i] * (prime[j] - 1);
-		}
-	}
-}
-</code></pre>
-<h3 id="四-欧拉定理及其扩展">四、欧拉定理及其扩展</h3>
-<h4 id="a-欧拉定理">A 欧拉定理</h4>
-<ul>
-<li>
-<p>若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">a,m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span></span></span></span> 互质，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mrow><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow></msup><mo>≡</mo><mn>1</mn><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a^{\varphi(m)}≡1(mod\ m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">φ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">m</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p>特别地，当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 为质数，即为 <strong>费马小定理</strong></p>
-</li>
-<li>
-<p>上式也可以扩展为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mi>b</mi></msup><mo>≡</mo><msup><mi>a</mi><mrow><mi>b</mi><mspace></mspace><mspace width="0.6666666666666666em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow></msup><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a^b≡a^{b \mod \varphi(m)}(mod\ m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mspace allowbreak mtight"></span><span class="mspace mtight" style="margin-right:0.7806666666666667em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">m</span><span class="mord mathrm mtight">o</span><span class="mord mathrm mtight">d</span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mathdefault mtight">φ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">m</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span> , 此时仍要求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">a,m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span></span></span></span> 互质。</p>
-</li>
-</ul>
-<h4 id="b-扩展欧拉定理">B 扩展欧拉定理</h4>
-<ul>
-<li>
-<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>&gt;</mo><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">b &gt; \varphi(m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span> , 有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mi>b</mi></msup><mo>≡</mo><msup><mi>a</mi><mrow><mi>b</mi><mspace></mspace><mspace width="0.6666666666666666em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo><mo>+</mo><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow></msup><mrow><mo fence="true">(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>m</mi><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">a^b≡a^{b \mod \varphi(m) + \varphi(m)}\left(mod\ m\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mspace allowbreak mtight"></span><span class="mspace mtight" style="margin-right:0.7806666666666667em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">m</span><span class="mord mathrm mtight">o</span><span class="mord mathrm mtight">d</span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mathdefault mtight">φ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">m</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">φ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">m</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">m</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span>，此式不要求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">a,m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span></span></span></span> 互质。</p>
-</li>
-<li>
-<p>注意当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>≤</mo><mi>φ</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">b ≤ \varphi(m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span> 时无效。</p>
-</li>
-</ul>
-<h3 id="题">题</h3>
-<p><a href="https://www.luogu.com.cn/problem/P5091">P5091 【模板】欧拉定理</a></p>
-<p><a href="https://www.luogu.com.cn/problem/P2158">P2158 SDOI2008 仪仗队</a></p>
-<p><a href="https://www.luogu.com.cn/problem/P4139">P4139 上帝与集合的正确用法</a></p>
-<h3 id="参考">参考</h3>
-<p><a href="https://www.luogu.com.cn/blog/Morning-Glory/ou-la-ji-lie-yang-xi-zheng-ming-post">咕咕日报#200 欧拉系列</a> 作者：Morning-Glory</p>
-<p>有关证明和进一步的学习可以点击链接。个人认为讲的不错。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[2019 Dec] 卷积、反演基础 学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji">
-        </link>
-        <updated>2020-02-03T14:55:06.000Z</updated>
-        <content type="html"><![CDATA[<p>供复习，没证明。</p>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              [2019 Dec] 卷积、反演基础 学习笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-02-03
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>供复习，没证明。</p>
 <p>要开始这个知识点，首先要了解一些 <strong>数论函数</strong>。</p>
 <ul>
 <li><strong>数论函数：</strong> 定义域为正整数，值域为复数的一个子集的函数。</li>
@@ -572,72 +259,96 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p><a href="https://www.luogu.com.cn/problem/P2522">P2522 [HAOI2011] Problem B</a></p>
 <p><a href="https://www.luogu.com.cn/problem/P2257">P2257 YY 的 GCD</a></p>
 <p><a href="https://www.luogu.com.cn/problem/P3327">P3327 [SDOI2015] 约数个数和</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSP 2019 游记]]></title>
-        <id>https://sqrtyz.github.io/post/csp-2019-you-ji</id>
-        <link href="https://sqrtyz.github.io/post/csp-2019-you-ji">
-        </link>
-        <updated>2020-02-03T14:51:50.000Z</updated>
-        <content type="html"><![CDATA[<p>友情链接 <a href="https://www.cnblogs.com/wlzs1432/p/11847666.html">@WLZS 的游记</a></p>
-<h1 id="很久以前">很久以前</h1>
-<h3 id="约-day-1500小学老师办公室">约 Day -1500，小学老师办公室</h3>
-<p>老师：“tyz，我们学校要组织学生参加「趣味程序设计比赛」，你想不想去啊？”</p>
-<p>tyz：“吼啊！但我家长兹不资瓷啊？”</p>
-<p>老师：“当然是资瓷的啦！今天放学你就去基♂房一趟喔！”</p>
-<p>当时没有人知道，这一番<s>批判</s>对话，彻底改变了 tyz 接下来的六年。</p>
-<h3 id="约-day-340初中计算机房">约 Day -340，初中计算机房</h3>
-<p>yyr：“哇我 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>412</mn></mrow><annotation encoding="application/x-tex">412</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">1</span><span class="mord">2</span></span></span></span> 耶”</p>
-<p>yky：“呀我测出来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>404</mn></mrow><annotation encoding="application/x-tex">404</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">4</span></span></span></span>”</p>
-<p>wjk：“呀我上了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>350</mn></mrow><annotation encoding="application/x-tex">350</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">5</span><span class="mord">0</span></span></span></span>”</p>
-<p>dyh：“艹我居然只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>319</mn></mrow><annotation encoding="application/x-tex">319</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord">9</span></span></span></span>”</p>
-<p>tyz：“为啥我只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>298</mn></mrow><annotation encoding="application/x-tex">298</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">9</span><span class="mord">8</span></span></span></span> 啊”</p>
-<p>1= 分数线：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>310</mn></mrow><annotation encoding="application/x-tex">310</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord">0</span></span></span></span></p>
-<p>“OI 这个东西，真是搞不透啊……”</p>
-<h3 id="day-3文化课教室">Day -3，文化课教室</h3>
-<p>收到半期成绩。考炸了，尤其是物理。</p>
-<p>文科照样飞天。语文 rk100+，英语 rk100+，历史 rk200+......</p>
-<p>神奇的是我居然没有退步，排名和上次一样 [惊喜]</p>
-<p>（算是攒了些 rp？）</p>
-<h3 id="day-2信竞机房">Day -2，信竞机房</h3>
-<p><s>在教练的重压下</s>，第一次停课，有点紧张 qwq</p>
-<p>还好这天课表上没有理科，晚自习补习的压力不大。</p>
-<h3 id="day-1信竞机房">Day -1，信竞机房</h3>
-<p>停课第二天，考试（Day1难度）<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>210</mn></mrow><annotation encoding="application/x-tex">210</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">1</span><span class="mord">0</span></span></span></span> 爆炸走人</p>
-<p>神仙 @WLZS 差点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>AK</mtext></mrow><annotation encoding="application/x-tex">\text{AK}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">AK</span></span></span></span></span>，可惜他因为不屑于提交拿到了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 分的好成绩，不然我又得往后退一名了。</p>
-<p>这天补课补得贼累</p>
-<h3 id="day-05信竞机房">Day -0.5，信竞机房</h3>
-<p><s>NOIP</s> CSP 前最后一天。以为总该来一场信心赛，结果只会 T1，后两道题完全不可做，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span> 分滚粗。要不是 @WLZS T1 忘记开 <code>long long</code>，不然他将以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>101</mn></mrow><annotation encoding="application/x-tex">101</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span></span></span></span> 分的绝对优势爆踩我！好可怕！</p>
-<p>话说这天人均 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span>？还有这个排名差距是什么情况（7 - 18 名并列100分，，）</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/image_hosting/p19punwo.png" alt="" loading="lazy"></figure>
-<h1 id="正文">正文</h1>
-<h3 id="day-0电子科大清水河校区">Day 0，电子科大清水河校区</h3>
-<p>太晚了，敲了几个板子就睡觉了</p>
-<p>明天加油，rp++！</p>
-<h3 id="day-1电子科大清水河校区">Day 1，电子科大清水河校区</h3>
-<p>开题状态良好，完全没有意识到接下来 3.5h 的腥风血雨。</p>
-<p>并没有把题目通读一遍，直接开 code。</p>
-<p>先手推了一会儿 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N = 1,2,3,4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">4</span></span></span></span> 的样例。找到规律后发现可以直接递归做。前 15 分钟把 D1T1 切了，为了求稳还检查了一会儿。过了一会儿猛然发现这道题有 5 分疑似卡精度，测了下 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>=</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">N = 64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span></span></span></span> 果然过不了，全输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。改了下代码，加了个 ULL，然后就过了。问题不大，至少不会爆零了gg</p>
-<p>接下来开 D1T2，按照以前的经验，D1T2 可以在 40min 内切掉，再看一下题，和以前做过的某一道题比较类似，于是没想打暴力，直接写正解（后来证明应该先数据分治一下）。</p>
-<p>一开始把先前那道题的结论搬了过来，认为在树上维护一个栈，如果两段前缀的栈状态一致，那么它们中间就应该是一个合法的括号序列。</p>
-<p>高高兴兴地打了 30min，然而突然发现自己过不了 <code>(()())</code>这种数据。当时以为自己结论记错了，于是又对结论进行了 “微调” ，然而还是过不了大样例。</p>
-<p>后来证明是我想错方向了。。。事实上是个树上dp。然而我在这道题上耗了两个多小时。。。</p>
-<p>最后自测 D1T2 只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 分。</p>
-<p>最后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>30</mn></mrow><annotation encoding="application/x-tex">30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span></span></span></span> 分钟，不敢再耗在 T2 上，被迫开 T3。打了个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 分的暴力反手走人。</p>
-<h3 id="day-15hotel">Day 1.5，Hotel</h3>
-<p>上午自闭了，颓废了一下午）</p>
-<h3 id="day-2电子科大清水河校区">Day 2，电子科大清水河校区</h3>
-<p>Day2 照常开题。看到密码我就有点慌了。</p>
-<p>meal 这道题看起来是个计数dp（而且一开始我 TM 还把题给看错了），但是我并不怎么会。不过 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>64</mn></mrow><annotation encoding="application/x-tex">64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span></span></span></span> 分的数据还是很好过的，30min 打了个 dp 然后就水到了</p>
-<p>D2T2 看了一眼以为是贪心（后来发现明显区间dp可以拿一些分，而且我居然当时没想到），不知道怎么搞，先看 T3。</p>
-<p>T3 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 和 链 的数据很好拿，花了接近 1h 把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>55</mn></mrow><annotation encoding="application/x-tex">55</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">5</span></span></span></span> 分拿了。然后开始推二叉树的规律，然而推了 30min 并没有什么进展。</p>
-<p>回头去搞 D2T2，随便打了一波贪心，过了小样例，然而大样例 WA 了，答案只有前几位是对的。</p>
-<p>这时时间已经剩的不多了（ZhuaJinShiJian!），放 Linux 下编译了一下就开始坐等退役。</p>
-<h1 id="自测">自测</h1>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>64</mn><mo>+</mo><mn>12</mn><mo>+</mo><mn>55</mn><mo>=</mo><mn>251</mn></mrow><annotation encoding="application/x-tex">100 + 10 + 10 + 64 + 12 + 55 = 251</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">1</span></span></span></span></p>
-<p>afo</p>
-<p>但是有人好像比我更惨</p>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0%E5%8F%8A%E6%80%A7%E8%B4%A8">一、基本数论函数及性质</a></li>
+<li><a href="#%E4%BA%8C-%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF">二、狄利克雷卷积</a></li>
+<li><a href="#%E4%B8%89-%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94">三、莫比乌斯反演</a></li>
+<li><a href="#%E5%9B%9B-%E5%B0%8F%E7%BB%93%E5%92%8C%E6%8F%90%E7%A4%BA">四、小结和提示</a></li>
+<li><a href="#%E9%A2%98">题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://sqrtyz.github.io/post/csp-2019-you-ji">
+              <h3 class="post-title">
+                CSP 2019 游记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://sqrtyz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

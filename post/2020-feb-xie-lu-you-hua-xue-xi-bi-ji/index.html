@@ -7,7 +7,7 @@
 <meta name="description" content="此 生 无 悔 入 O I">
 <meta name="theme-color" content="#000">
 <title>[2020 Feb] 斜率优化学习笔记 | Sqrtyz&#39;s Home</title>
-<link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1581316741597">
+<link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1581327046939">
 <link rel="stylesheet" href="https://sqrtyz.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -506,12 +506,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>9分钟</span>
+      <span>13分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1787<span class="pc-show">字数</span></span>
+      <span>2577<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -604,7 +604,118 @@ int main() {
 }
 </code></pre>
 <h2 id="例题与分析">例题与分析</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2365">[Luogu P2365] 任务安排</a></p>
+<p>首先我们可以化出和之前类似的 dp 方程，如下：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mo>(</mo><mi>S</mi><mo>+</mo><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>)</mo><mo>∗</mo><mi>c</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>∗</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mi>S</mi><mo>∗</mo><mi>c</mi><mo>[</mo><mi>N</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[j] =  (S + t[i]) * c[j] + f[i] - t[i] * c[i] - S * c[N]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">]</span></span></span></span></p>
+<p>显然，决策点的坐标应为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>c</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">(c[j],f[j])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">c</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span>，直线斜率为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>+</mo><mi>t</mi><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">S+t[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>，直接斜率优化 dp 即可。</p>
+<p>需要注意的是，与上题不同的是，这道题维护的是下凸包。</p>
+<p>代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+
+#define Maxn 5010
+
+using namespace std;
+
+int read() {
+	int x = 0, f = 1;
+	char c = getchar();
+	while(c &lt; '0' || c &gt; '9') {
+		if(c == '-') f = -1;
+		c = getchar();
+	}
+	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
+		x = x * 10 + c - '0';
+		c = getchar();
+	}
+	return x * f;
+}
+
+int N, S, t[Maxn], c[Maxn], f[Maxn], Q[Maxn * 2];
+
+double k(int a, int b) {
+	return (f[b] - f[a]) * 1.0 / (c[b] - c[a]);
+}
+
+int main() {
+	N = read(); S = read();
+	for(int i = 1; i &lt;= N; ++i) {
+		t[i] = read() + t[i - 1];
+		c[i] = read() + c[i - 1];
+	}
+	int head = 1, tail = 1;
+	for(int i = 1; i &lt;= N; ++i) {
+		while(k(Q[head], Q[head + 1]) &lt; S + t[i] &amp;&amp; head &lt; tail) ++head;
+		f[i] = f[Q[head]] + t[i] * c[i] + S * c[N] - (S + t[i]) * c[Q[head]];
+		while(k(Q[tail - 1], Q[tail]) &gt; k(Q[tail], i) &amp;&amp; head &lt; tail) --tail;
+		Q[++tail] = i;
+	}
+	cout &lt;&lt; f[N] &lt;&lt; endl;
+	return 0;
+} 
+</code></pre>
 <h2 id="拓展">拓展</h2>
+<p>还是上面的题目，但如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 可能是负数，即查询的斜率不具有单调性，该怎么办呢？</p>
+<p>思考一下，此时队尾出队仍和原来一样，因为插入的决策点的横坐标仍具有单调性。然而队头出队就不一定了，因为以前我们是根据斜率的单调来弹出队头的，现在斜率不再单调，队头也必须保存。</p>
+<p>因此这样维护凸包的数据结构就是一个单调栈。当我们要查询的时候，由于斜率不单调，不能再直接读取队头，需要二分找到刚好直线切凸包的位置，复杂度只多了一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span></span></span></span>。</p>
+<p>此即 <a href="https://www.luogu.com.cn/problem/P5785">[SDOI2012]任务安排</a>，下面呈现有关代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+
+#define Maxn 300010
+#define LL long long
+
+using namespace std;
+
+int read() {
+	int x = 0, f = 1;
+	char c = getchar();
+	while(c &lt; '0' || c &gt; '9') {
+		if(c == '-') f = -1;
+		c = getchar();
+	}
+	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
+		x = x * 10 + c - '0';
+		c = getchar();
+	}
+	return x * f;
+}
+
+LL N, S, t[Maxn], c[Maxn], f[Maxn], stack[Maxn * 2], top = 1;
+
+double k(int a, int b) {
+	return (f[b] - f[a]) * 1.0 / (c[b] - c[a]);
+}
+
+int ef(int l, int r, int i) {
+	while(l &lt; r) {
+		int mid = (l + r) &gt;&gt; 1;
+		if(f[stack[mid + 1]] - f[stack[mid]] &lt;= (S + t[i]) * (c[stack[mid + 1]] - c[stack[mid]])) l = mid + 1;
+		else r = mid;
+	}
+	return stack[l];
+}
+
+int main() {
+	N = read(); S = read();
+	for(int i = 1; i &lt;= N; ++i) {
+		t[i] = read() + t[i - 1];
+		c[i] = read() + c[i - 1];
+	}
+	for(int i = 1; i &lt;= N; ++i) {
+		int j;
+		if(top &gt; 1) j = ef(1, top, i);
+		else j = stack[1];
+		f[i] = f[j] + t[i] *c[i] + S * c[N] - (S + t[i]) * c[j];
+		while((f[stack[top]] - f[stack[top - 1]]) * (c[i] - c[stack[top]]) &gt;= (f[i] - f[stack[top]]) * (c[stack[top]] - c[stack[top - 1]]) &amp;&amp; top &gt; 1) --top;
+		stack[++top] = i;
+	}
+	cout &lt;&lt; f[N] &lt;&lt; endl;
+	return 0;
+} 
+</code></pre>
 
               </div>
               <div class="post-footer">

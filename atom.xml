@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-02-09T13:01:55.747Z</updated>
+    <updated>2020-02-10T02:01:34.451Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
@@ -16,6 +16,14 @@
         <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4">
         </link>
         <updated>2020-02-09T03:17:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>2020 年题目归档第 4 组。</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li>CF578C Weakness and Poorness</li>
+<li>CF1285D Dr. Evil Underscores</li>
+<li>CF1242C Sum Balance</li>
+</ul>
+]]></summary>
         <content type="html"><![CDATA[<p>2020 年题目归档第 4 组。</p>
 <h2 id="目录">目录</h2>
 <ul>
@@ -23,6 +31,7 @@
 <li>CF1285D Dr. Evil Underscores</li>
 <li>CF1242C Sum Balance</li>
 </ul>
+<!-- more -->
 <h2 id="cf578c-weakness-and-poorness">CF578C Weakness and Poorness</h2>
 <p>一道基础算法题目。</p>
 <h3 id="题意">题意</h3>

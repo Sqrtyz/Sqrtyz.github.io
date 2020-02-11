@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-02-10T09:30:52.171Z</updated>
+    <updated>2020-02-11T10:28:54.558Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
@@ -10,6 +10,244 @@
     <logo>https://sqrtyz.github.io/images/avatar.png</logo>
     <icon>https://sqrtyz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Sqrtyz&apos;s Home</rights>
+    <entry>
+        <title type="html"><![CDATA[[2020 Feb] 题目归档 #5]]></title>
+        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5">
+        </link>
+        <updated>2020-02-11T10:14:24.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="目录">目录</h2>
+<ul>
+<li><a href="http://poj.org/problem?id=2142">[POJ2142] The balance</a></li>
+<li><a href="http://poj.org/problem?id=2417">[POJ2417] Discrete Logging</a></li>
+<li><a href="http://poj.org/problem?id=2891">[POJ2891] Strange Way to Express Integers</a></li>
+</ul>
+<p>所有题目链接请从「目录」中查看，下面不再提供题意概括。</p>
+<h2 id="poj2142-the-balance">[POJ2142] The balance</h2>
+<h3 id="解题">解题</h3>
+<p>显然的扩展欧几里得算法。可能刚开始会觉得情况有些多，实际上可以缩减为只有两个情况，然后比较即可。</p>
+<p>解方程 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">ax+by=d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span> ，然后对解出来的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 取绝对值即可。</p>
+<h3 id="代码">代码</h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+
+#define LL long long
+
+using namespace std;
+
+LL read() {
+	LL x = 0, f = 1;
+	char c = getchar();
+	while(c &lt; '0' || c &gt; '9') {
+		if(c == '-') f = -1;
+		c = getchar();
+	}
+	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
+		x = x * 10 + c - '0';
+		c = getchar();
+	}
+	return x * f;
+}
+
+LL gcd(LL a, LL b) {
+	if(!b) return a;
+	else return gcd(b, a % b);
+}
+
+void exgcd(LL a, LL b, LL &amp;x, LL &amp;y) {
+	if(!b) {
+		x = 1, y = 0;
+		return;
+	}
+	else {
+		exgcd(b, a % b, x, y);
+		LL cpx = x;
+		x = y, y = cpx - (a / b) * y;
+	}
+}
+
+int main() {
+	LL a, b, d;
+	while(true) {
+		bool flag = 0;
+		a = read(); b = read(); d = read();
+		if(a &lt; b) swap(a, b), flag = 1;
+		if(!a &amp;&amp; !b &amp;&amp; !d) break;
+		LL GCD = gcd(a, b), modx = b / GCD, mody = a / GCD, x, y, x1, y1, x2, y2;
+		exgcd(a, b, x, y);
+		x *= (d / GCD), y *= (d / GCD);
+		x1 = (x % modx + modx) % modx, y1 = (d - a * x1) / b;
+		y2 = (y % mody + mody) % mody, x2 = (d - b * y2) / a;
+		if(y1 &lt; 0) y1 = -y1;
+		if(x2 &lt; 0) x2 = -x2;
+		if(!flag) {
+			if(x1 + y1 &lt; x2 + y2) printf(&quot;%lld %lld\n&quot;, x1, y1);
+			else if(x1 + y1 &gt; x2 + y2) printf(&quot;%lld %lld\n&quot;, x2, y2);
+			else if(a * x1 + b * y1 &lt; a * x2 + b * y2) printf(&quot;%lld %lld\n&quot;, x1, y1);
+			else printf(&quot;%lld %lld\n&quot;, x2, y2);
+		}
+		else {
+			if(x1 + y1 &lt; x2 + y2) printf(&quot;%lld %lld\n&quot;, y1, x1);
+			else if(x1 + y1 &gt; x2 + y2) printf(&quot;%lld %lld\n&quot;, y2, x2);
+			else if(a * x1 + b * y1 &lt; a * x2 + b * y2) printf(&quot;%lld %lld\n&quot;, y1, x1);
+			else printf(&quot;%lld %lld\n&quot;, y2, x2);
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="poj2417-discrete-logging">[POJ2417] Discrete Logging</h2>
+<h3 id="解题-2">解题</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext mathvariant="monospace">BSGS</mtext></mrow><annotation encoding="application/x-tex">\texttt{BSGS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">BSGS</span></span></span></span></span> 算法板子题。没啥可说的。</p>
+<p>只是这道题时空都有点卡就很捞。</p>
+<h3 id="程序">程序</h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+
+#define LL long long
+
+using namespace std;
+
+LL p, a, b;
+map &lt;LL, LL&gt; vis;
+
+LL Pow(LL a, LL b) {
+	LL ans = 1, base = a;
+	while(b) {
+		if(b &amp; 1) ans = ans * base % p;
+		base = base * base % p;
+		b &gt;&gt;= 1;
+	}
+	return ans;
+}
+
+void work() {
+	if(b == 1) {
+		printf(&quot;0\n&quot;);
+		return;
+	}
+	vis.clear();
+	LL res = 1, k = sqrt(p) + 1;
+	LL inva = Pow(a, p - 2);
+	vis[1] = k;
+	for(LL i = 1; i &lt;= k - 1; ++i) {
+		res = res * a % p;
+		vis[res] = i;
+		if(res == b) {
+			printf(&quot;%lld\n&quot;, i);
+			return;
+		}
+	}
+	LL num = 1, mul = Pow(inva, k);
+	for(LL i = k; i &lt;= p; i += k) {
+		num = mul * num % p;
+		res = num * b % p;
+		if(vis[res]) {
+			printf(&quot;%lld\n&quot;, i + (vis[res] == k ? 0 : vis[res]));
+			return;
+		}
+	}
+	printf(&quot;no solution\n&quot;);
+}
+
+int main() {
+	while(scanf(&quot;%lld%lld%lld&quot;, &amp;p, &amp;a, &amp;b) != EOF) work();
+	return 0;
+}
+</code></pre>
+<h2 id="poj2891-strange-way-to-express-integers">[POJ2891] Strange Way to Express Integers</h2>
+<h3 id="解题-3">解题</h3>
+<p>扩展中国剩余定理 (EXCRT) 板子题，luogu 上也有对应的板子。</p>
+<p>很恶心的地方就是这道题可能会乘法溢出，所以要上「龟速乘」。</p>
+<h3 id="程序-2">程序</h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+
+#define Maxk 1000010
+#define LL long long
+
+using namespace std;
+
+LL read() {
+	LL x = 0, f = 1;
+	char c = getchar();
+	while(c &lt; '0' || c &gt; '9') {
+		if(c == '-') f = -1;
+		c = getchar();
+	}
+	while('0' &lt;= c &amp;&amp; c &lt;= '9') {
+		x = x * 10 + c - '0';
+		c = getchar();
+	}
+	return x * f;
+}
+
+LL K, r[Maxk], m[Maxk];
+
+LL gcd(LL a, LL b) {
+	if(!b) return a;
+	else return gcd(b, a % b);
+}
+
+void exgcd(LL a, LL b, LL &amp;x, LL &amp;y) {
+	if(!b) {
+		x = 1, y = 0;
+		return;
+	}
+	else {
+		exgcd(b, a % b, x, y);
+		LL cpx = x;
+		x = y, y = cpx - (a / b) * y;
+	}
+}
+
+LL mul(LL a, LL b, LL p) {
+	LL flag = 1;
+	if(b &lt; 0) flag = -1, b = -b;
+	LL ans = 0, base = a;
+	while(b) {
+		if(b &amp; 1) ans = (ans + base) % p;
+		base = (base * 2) % p;
+		b &gt;&gt;= 1;
+	}
+	return ans * flag;
+}
+
+int main() {
+	while(scanf(&quot;%Ild&quot;, &amp;K) != EOF) {
+		memset(m, 0, sizeof(m));
+		memset(r, 0, sizeof(r));
+		for(int i = 1; i &lt;= K; ++i) {
+			m[i] = read(); r[i] = read();
+		}
+		LL x, y;
+		bool flag = 0;
+		for(int i = 1; i &lt; K; ++i) {
+			LL GCD = gcd(m[i], m[i + 1]), mod = m[i + 1] / GCD;
+			if((r[i + 1] - r[i]) % GCD) {
+				printf(&quot;-1\n&quot;);
+				flag = 1;
+				break;
+			}
+			exgcd(m[i], m[i + 1], x, y);
+			x = mul(x, ((r[i + 1] - r[i]) / GCD % mod + mod) % mod, mod);
+			x = (x % mod + mod) % mod;
+			r[i + 1] = x * m[i] + r[i];
+			m[i + 1] /= GCD; m[i + 1] *= m[i];
+		}
+		if(flag) continue;
+		printf(&quot;%lld\n&quot;, r[K]);
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #4]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4</id>

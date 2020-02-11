@@ -6,7 +6,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="此 生 无 悔 入 O I">
 <meta name="theme-color" content="#000">
-<title>[2020 Feb] 网络流基础复习笔记 | Sqrtyz&#39;s Home</title>
+<title>[2020 Feb] 题目归档 #5 | Sqrtyz&#39;s Home</title>
 <link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1581416916466">
 <link rel="stylesheet" href="https://sqrtyz.github.io/styles/main.css">
 
@@ -25,8 +25,8 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="[2020 Feb] 网络流基础复习笔记" />
-    <meta name="keywords" content="笔记" />
+    <meta name="description" content="[2020 Feb] 题目归档 #5" />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -222,18 +222,23 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
-<ul>
 <li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
-<li><a href="#%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81">模板代码</a>
+<li><a href="#poj2142-the-balance">[POJ2142] The balance</a>
 <ul>
-<li><a href="#1-%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81">1. 网络最大流</a></li>
-<li><a href="#2-%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81">2. 最小费用最大流</a></li>
+<li><a href="#%E8%A7%A3%E9%A2%98">解题</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%80%E4%BA%9B%E5%9D%91%E7%82%B9">一些坑点</a></li>
-<li><a href="#%E5%A5%97%E8%B7%AF%E5%AE%9A%E7%90%86">套路定理</a></li>
-<li><a href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90">题目分析</a></li>
+<li><a href="#poj2417-discrete-logging">[POJ2417] Discrete Logging</a>
+<ul>
+<li><a href="#%E8%A7%A3%E9%A2%98-2">解题</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F">程序</a></li>
+</ul>
+</li>
+<li><a href="#poj2891-strange-way-to-express-integers">[POJ2891] Strange Way to Express Integers</a>
+<ul>
+<li><a href="#%E8%A7%A3%E9%A2%98-3">解题</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F-2">程序</a></li>
 </ul>
 </li>
 </ul>
@@ -488,8 +493,8 @@ window.addEventListener('load', function() {
               <div class="article-box">
     <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji">
-      [2020 Feb] 网络流基础复习笔记
+    <a class="post-title-link" href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5">
+      [2020 Feb] 题目归档 #5
     </a>
   </h1>
   <div class="post-meta">
@@ -497,72 +502,44 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-02-03</span>
+      <span>2020-02-11</span>
     </span>
-    
-      <span class="meta-item">
-        <span class="post-meta-divider pc-show">|</span>
-        <i class="fa fa-folder-o"></i>
-        <span class="pc-show">分类于</span>
-        
-          
-            <a href="https://sqrtyz.github.io/tag/I6UP3uWiV">
-              <span>笔记</span>
-            </a>
-          
-        
-      </span>
-      <span class="post-meta-divider">|</span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>7分钟</span>
+      <span>6分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1435<span class="pc-show">字数</span></span>
+      <span>1019<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <p>尚未全部完成。无零基础内容。</p>
-<h3 id="目录">目录</h3>
+                <h2 id="目录">目录</h2>
 <ul>
-<li>
-<p>模板代码</p>
-</li>
-<li>
-<p>一些坑点</p>
-</li>
-<li>
-<p>定理套路</p>
-</li>
-<li>
-<p>题目分析</p>
-</li>
+<li><a href="http://poj.org/problem?id=2142">[POJ2142] The balance</a></li>
+<li><a href="http://poj.org/problem?id=2417">[POJ2417] Discrete Logging</a></li>
+<li><a href="http://poj.org/problem?id=2891">[POJ2891] Strange Way to Express Integers</a></li>
 </ul>
-<!-- more -->
-<h3 id="模板代码">模板代码</h3>
-<h4 id="1-网络最大流">1. 网络最大流</h4>
-<p><a href="https://www.luogu.com.cn/problem/P3376">P3376 【模板】网络最大流</a><br>
-用于解决求一个网络最大流问题（<s>废话</s>）。下面使用了效率较高且实现简单的 Dinic 算法。</p>
-<p>而且貌似我并没有加「当前弧优化」也能 AC ？</p>
+<p>所有题目链接请从「目录」中查看，下面不再提供题意概括。</p>
+<h2 id="poj2142-the-balance">[POJ2142] The balance</h2>
+<h3 id="解题">解题</h3>
+<p>显然的扩展欧几里得算法。可能刚开始会觉得情况有些多，实际上可以缩减为只有两个情况，然后比较即可。</p>
+<p>解方程 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">ax+by=d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span> ，然后对解出来的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 取绝对值即可。</p>
+<h3 id="代码">代码</h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
-#include &lt;queue&gt;
 
-#define Maxn 10010
-#define Maxm 100010
+#define LL long long
 
 using namespace std;
 
-const int INF = 0x3f3f3f;
-
-int read() {
-	int x = 0,f = 1;
+LL read() {
+	LL x = 0, f = 1;
 	char c = getchar();
 	while(c &lt; '0' || c &gt; '9') {
 		if(c == '-') f = -1;
@@ -575,97 +552,131 @@ int read() {
 	return x * f;
 }
 
-int N,M,S,T;
-
-struct Edge {
-	int next,to,dis;
-}
-edge[2 * Maxm];
-int head[Maxn],edge_num = 1;
-
-void add_edge(int from,int to,int dis) {
-	edge[++edge_num].next = head[from];
-	edge[edge_num].to = to;
-	edge[edge_num].dis = dis;
-	head[from] = edge_num;
+LL gcd(LL a, LL b) {
+	if(!b) return a;
+	else return gcd(b, a % b);
 }
 
-queue &lt;int&gt; Q;
-int dist[Maxn];
+void exgcd(LL a, LL b, LL &amp;x, LL &amp;y) {
+	if(!b) {
+		x = 1, y = 0;
+		return;
+	}
+	else {
+		exgcd(b, a % b, x, y);
+		LL cpx = x;
+		x = y, y = cpx - (a / b) * y;
+	}
+}
 
-bool bfs() {
-	memset(dist,0,sizeof(dist));
-	while(!Q.empty()) Q.pop();
-	Q.push(S); dist[S] = 1;
-	while(!Q.empty()) {
-		int u = Q.front();
-		Q.pop();
-		for(int i = head[u];i;i = edge[i].next) {
-			int v = edge[i].to; 
-			if(!dist[v] &amp;&amp; edge[i].dis) {
-				dist[v] = dist[u] + 1;
-				Q.push(v);
-				if(v == T) return 1;
-			}
+int main() {
+	LL a, b, d;
+	while(true) {
+		bool flag = 0;
+		a = read(); b = read(); d = read();
+		if(a &lt; b) swap(a, b), flag = 1;
+		if(!a &amp;&amp; !b &amp;&amp; !d) break;
+		LL GCD = gcd(a, b), modx = b / GCD, mody = a / GCD, x, y, x1, y1, x2, y2;
+		exgcd(a, b, x, y);
+		x *= (d / GCD), y *= (d / GCD);
+		x1 = (x % modx + modx) % modx, y1 = (d - a * x1) / b;
+		y2 = (y % mody + mody) % mody, x2 = (d - b * y2) / a;
+		if(y1 &lt; 0) y1 = -y1;
+		if(x2 &lt; 0) x2 = -x2;
+		if(!flag) {
+			if(x1 + y1 &lt; x2 + y2) printf(&quot;%lld %lld\n&quot;, x1, y1);
+			else if(x1 + y1 &gt; x2 + y2) printf(&quot;%lld %lld\n&quot;, x2, y2);
+			else if(a * x1 + b * y1 &lt; a * x2 + b * y2) printf(&quot;%lld %lld\n&quot;, x1, y1);
+			else printf(&quot;%lld %lld\n&quot;, x2, y2);
+		}
+		else {
+			if(x1 + y1 &lt; x2 + y2) printf(&quot;%lld %lld\n&quot;, y1, x1);
+			else if(x1 + y1 &gt; x2 + y2) printf(&quot;%lld %lld\n&quot;, y2, x2);
+			else if(a * x1 + b * y1 &lt; a * x2 + b * y2) printf(&quot;%lld %lld\n&quot;, y1, x1);
+			else printf(&quot;%lld %lld\n&quot;, y2, x2);
 		}
 	}
 	return 0;
 }
-
-int dinic(int u,int flow) {
-	if(u == T) return flow;
-	int rest = flow;
-	for(int i = head[u];i &amp;&amp; rest;i = edge[i].next) {
-		int v = edge[i].to;
-		if(dist[u] + 1 == dist[v] &amp;&amp; edge[i].dis) {
-			int k = dinic(v,min(rest,edge[i].dis));
-			if(!k) dist[v] = 0;
-			rest -= k;
-			edge[i].dis -= k;
-			edge[i ^ 1].dis += k;
-		} 
-	}
-	return flow - rest;
-}
-
-int main() {
-	N = read(); M = read();
-	S = read(); T = read();
-	int u,v,w;
-	for(int i = 1; i &lt;= M; i++) {
-		u = read(); v = read(); w = read();
-		add_edge(u,v,w);
-		add_edge(v,u,0);
-	}
-	int maxflow = 0, flow = 0;
-	while(bfs()) {
-		flow = dinic(S,INF);
-        maxflow += flow;
-	}
-	cout &lt;&lt; maxflow;
-	return 0;
-}
 </code></pre>
-<p>除此之外还有 EK 算法，由于效率较低再次不再赘述。但是 EK 算法也有他的用武之地。费用流的实现一般就会建立在 EK 的基础上。如下：</p>
-<h4 id="2-最小费用最大流">2. 最小费用最大流</h4>
-<p><a href="https://www.luogu.com.cn/problem/P3381">P3381 【模板】最小费用最大流</a><br>
-用于解决在 <strong>最大流的基础上</strong>，使得费用最小的问题（<s>废话</s>）。</p>
-<p>设图的边集为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>，某条边 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span> 的流量为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">f_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，费用为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">c_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，则整个图的费用定义为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo>(</mo><mi>G</mi><mo>)</mo><mo>=</mo><msub><mo>∑</mo><mrow><mi>e</mi><mo>∈</mo><mi>E</mi></mrow></msub><msub><mi>f</mi><mi>e</mi></msub><mo>×</mo><msub><mi>c</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">cost(G)=\sum_{e \in E } f_e \times c_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.07708em;vertical-align:-0.32708000000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.17862099999999992em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.32708000000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
-<p>下面是用的为 EK 算法。在最大流 EK 模板的基础上，将 bfs 部分改为 SPFA（不用 Dij 的原因是因为可能有负权）即可求解最小费用最大流。最大费用最大流同理。</p>
+<h2 id="poj2417-discrete-logging">[POJ2417] Discrete Logging</h2>
+<h3 id="解题-2">解题</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext mathvariant="monospace">BSGS</mtext></mrow><annotation encoding="application/x-tex">\texttt{BSGS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">BSGS</span></span></span></span></span> 算法板子题。没啥可说的。</p>
+<p>只是这道题时空都有点卡就很捞。</p>
+<h3 id="程序">程序</h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
-#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;map&gt;
 
-#define Maxn 5010
-#define Maxm 50010
+#define LL long long
 
 using namespace std;
 
-int N, M, S, T, maxflow, ans;
+LL p, a, b;
+map &lt;LL, LL&gt; vis;
 
-int read() {
-	int x = 0,f = 1;
+LL Pow(LL a, LL b) {
+	LL ans = 1, base = a;
+	while(b) {
+		if(b &amp; 1) ans = ans * base % p;
+		base = base * base % p;
+		b &gt;&gt;= 1;
+	}
+	return ans;
+}
+
+void work() {
+	if(b == 1) {
+		printf(&quot;0\n&quot;);
+		return;
+	}
+	vis.clear();
+	LL res = 1, k = sqrt(p) + 1;
+	LL inva = Pow(a, p - 2);
+	vis[1] = k;
+	for(LL i = 1; i &lt;= k - 1; ++i) {
+		res = res * a % p;
+		vis[res] = i;
+		if(res == b) {
+			printf(&quot;%lld\n&quot;, i);
+			return;
+		}
+	}
+	LL num = 1, mul = Pow(inva, k);
+	for(LL i = k; i &lt;= p; i += k) {
+		num = mul * num % p;
+		res = num * b % p;
+		if(vis[res]) {
+			printf(&quot;%lld\n&quot;, i + (vis[res] == k ? 0 : vis[res]));
+			return;
+		}
+	}
+	printf(&quot;no solution\n&quot;);
+}
+
+int main() {
+	while(scanf(&quot;%lld%lld%lld&quot;, &amp;p, &amp;a, &amp;b) != EOF) work();
+	return 0;
+}
+</code></pre>
+<h2 id="poj2891-strange-way-to-express-integers">[POJ2891] Strange Way to Express Integers</h2>
+<h3 id="解题-3">解题</h3>
+<p>扩展中国剩余定理 (EXCRT) 板子题，luogu 上也有对应的板子。</p>
+<p>很恶心的地方就是这道题可能会乘法溢出，所以要上「龟速乘」。</p>
+<h3 id="程序-2">程序</h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+
+#define Maxk 1000010
+#define LL long long
+
+using namespace std;
+
+LL read() {
+	LL x = 0, f = 1;
 	char c = getchar();
 	while(c &lt; '0' || c &gt; '9') {
 		if(c == '-') f = -1;
@@ -678,122 +689,65 @@ int read() {
 	return x * f;
 }
 
-struct Edge {
-	int next, to;
-	int dis, cost;
-}
-edge[Maxm * 2];
-int head[Maxn], edge_num = 1;
+LL K, r[Maxk], m[Maxk];
 
-void add_edge(int from, int to, int dis, int cost) {
-	edge[++edge_num].next = head[from];
-	edge[edge_num].to = to;
-	edge[edge_num].dis = dis;
-	edge[edge_num].cost = cost;
-	head[from] = edge_num;
+LL gcd(LL a, LL b) {
+	if(!b) return a;
+	else return gcd(b, a % b);
 }
 
-int dist[Maxn], incf[Maxn], pre[Maxn];
-bool inq[Maxn];
-void init() {
-	memset(dist, 63, sizeof(dist));
-	memset(inq, 0, sizeof(inq));
-	memset(incf, 63, sizeof(incf));
-	memset(pre, 0, sizeof(pre));
-}
-bool SPFA() {
-	bool flag = 0;
-	queue &lt;int&gt; Q;
-	init();
-	Q.push(S); inq[S] = 1; dist[S] = 0;
-	while(!Q.empty()) {
-		int u = Q.front(); Q.pop(); inq[u] = 0;
-		for(int i = head[u]; i; i = edge[i].next) {
-			if(!edge[i].dis) continue;
-			int v = edge[i].to;
-			if(dist[v] &gt; dist[u] + edge[i].cost) {
-				dist[v] = dist[u] + edge[i].cost;
-				incf[v] = min(incf[u], edge[i].dis);
-				if(v == T) flag = 1;
-				pre[v] = i;
-				if(!inq[v]) {inq[v] = 1; Q.push(v);}
-			}
-		}
+void exgcd(LL a, LL b, LL &amp;x, LL &amp;y) {
+	if(!b) {
+		x = 1, y = 0;
+		return;
 	}
-	return flag;
+	else {
+		exgcd(b, a % b, x, y);
+		LL cpx = x;
+		x = y, y = cpx - (a / b) * y;
+	}
 }
 
-void upd() {
-	int x = T;
-	while(x != S) {
-		int i = pre[x];
-		edge[i].dis -= incf[T];
-		edge[i ^ 1].dis += incf[T];
-		x = edge[i ^ 1].to;
+LL mul(LL a, LL b, LL p) {
+	LL flag = 1;
+	if(b &lt; 0) flag = -1, b = -b;
+	LL ans = 0, base = a;
+	while(b) {
+		if(b &amp; 1) ans = (ans + base) % p;
+		base = (base * 2) % p;
+		b &gt;&gt;= 1;
 	}
-	maxflow += incf[T];
-	ans += dist[T] * incf[T];
+	return ans * flag;
 }
 
 int main() {
-	N = read(); M = read(); S = read(); T = read();
-	int u, v, c, w;
-	for(int i = 1; i &lt;= M; i++) {
-		u = read(); v = read(); c = read(); w = read();
-		add_edge(u, v, c, w);
-		add_edge(v, u, 0, -w);
+	while(scanf(&quot;%Ild&quot;, &amp;K) != EOF) {
+		memset(m, 0, sizeof(m));
+		memset(r, 0, sizeof(r));
+		for(int i = 1; i &lt;= K; ++i) {
+			m[i] = read(); r[i] = read();
+		}
+		LL x, y;
+		bool flag = 0;
+		for(int i = 1; i &lt; K; ++i) {
+			LL GCD = gcd(m[i], m[i + 1]), mod = m[i + 1] / GCD;
+			if((r[i + 1] - r[i]) % GCD) {
+				printf(&quot;-1\n&quot;);
+				flag = 1;
+				break;
+			}
+			exgcd(m[i], m[i + 1], x, y);
+			x = mul(x, ((r[i + 1] - r[i]) / GCD % mod + mod) % mod, mod);
+			x = (x % mod + mod) % mod;
+			r[i + 1] = x * m[i] + r[i];
+			m[i + 1] /= GCD; m[i + 1] *= m[i];
+		}
+		if(flag) continue;
+		printf(&quot;%lld\n&quot;, r[K]);
 	}
-	while(SPFA()) upd();
-	cout &lt;&lt; maxflow &lt;&lt; &quot; &quot; &lt;&lt; ans &lt;&lt; endl;
-	return 0; 
+	return 0;
 }
 </code></pre>
-<p>此外还有「有上下界网络流问题」。由于笔者太菜（暴露了）这里暂时不提。</p>
-<h3 id="一些坑点">一些坑点</h3>
-<p>此处以 Dinic 算法为例（因为最常用）。</p>
-<p>这个人怎么犯这么多傻逼错误啊 ？</p>
-<ul>
-<li>
-<p>由于要处理反向边，初始时要令 <code>edge_num</code> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
-</li>
-<li>
-<p>每次 bfs 前，<code>dist</code> 数组归零。</p>
-</li>
-<li>
-<p>这句话 <code>int k = dinic(v,min(rest,edge[i].dis));</code></p>
-<p>其中的 <code>rest</code> 一定不要写成 <code>flow</code>！（脑残几次了）</p>
-</li>
-</ul>
-<h3 id="套路定理">套路定理</h3>
-<p>比较常用的两个定理，很菜是吧。</p>
-<ul>
-<li>
-<p>最大流最小割定理</p>
-<p>众所周知，最大流 = 最小割，感性可证（?）。</p>
-</li>
-<li>
-<p>最小路径覆盖 = 点数 - 最大流</p>
-<p>请注意，此处所谓 <strong>最大流</strong> 的建图并非原图。详见模板题 <a href="https://www.luogu.com.cn/problem/P2764">P2764 最小路径覆盖问题</a>。</p>
-</li>
-</ul>
-<p>网络流的关键在于建模。以下是几个套路：</p>
-<ul>
-<li>
-<p><strong>拆点</strong> 如果遇到这样的字眼，比如「只能经过某个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 次」之类的，想到拆点。把一个点拆成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 个点，中间用一条有流量的边连接。</p>
-<p>例题：<a href="https://www.luogu.com.cn/problem/P2153">P2153 [SDOI2009] 晨跑</a></p>
-</li>
-<li>
-<p><strong>分组</strong> 其实这个有点涉及到二分图了。遇到「选出尽量多的元素，但某些元素之间不能共存」之类的问题，可以想到 <strong>最大点权独立集</strong>：</p>
-<p>先将所有元素分为互不相交的两组。建立超级源汇点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo separator="true">,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S,T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>, 把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 分别与两组中每个点相连，流量全为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ; 再将互不相容的点相连，流全为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>I</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">INF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>。假设一开始我们选取了全部元素，现在必须要删除一些元素。显然删除元素的个数即为该网络的 <strong>最小割</strong>，亦即最大流。</p>
-<p>例题：hdu1569 方格取数。</p>
-</li>
-<li>
-<p><strong>灵感建模</strong> 反正看到有关匹配「匹配」的字眼，可以考虑网络流。</p>
-<p>例题：<a href="https://www.luogu.com.cn/problem/P2756">P2756 飞行员配对方案问题</a></p>
-</li>
-</ul>
-<h3 id="题目分析">题目分析</h3>
-<p>先咕着</p>
 
               </div>
               <div class="post-footer">
@@ -804,7 +758,7 @@ int main() {
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji" title="[2020 Feb] 网络流基础复习笔记">[2020 Feb] 网络流基础复习笔记</a>
+      <a href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5" title="[2020 Feb] 题目归档 #5">[2020 Feb] 题目归档 #5</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -813,21 +767,15 @@ int main() {
   </ul>
   <div class="tags">
     
-      <a href="https://sqrtyz.github.io/tag/I6UP3uWiV"># 笔记</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="[2020 Feb] 题目归档 #1" href="https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji">[2020 Feb] 题目归档 #1</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="[2020 Feb] 题目归档 #1" href="https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="[2019 Dec] 欧拉函数基础 学习笔记" href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji">[2019 Dec] 欧拉函数基础 学习笔记</a>
-        <a class="nav-mobile-next" title="[2019 Dec] 欧拉函数基础 学习笔记" href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji">下一篇</a>
+        <a class="nav-pc-next" title="[2020 Feb] 题目归档 #4" href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4">[2020 Feb] 题目归档 #4</a>
+        <a class="nav-mobile-next" title="[2020 Feb] 题目归档 #4" href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

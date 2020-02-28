@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-02-14T13:31:01.929Z</updated>
+    <updated>2020-02-28T08:17:49.004Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, Sqrtyz&apos;s Home</rights>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 组合数学学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu">
+        <id>https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu/">
         </link>
         <updated>2020-02-12T03:03:52.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="前言">前言</h2>
@@ -31,8 +31,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #5]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5">
+        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5/">
         </link>
         <updated>2020-02-11T10:14:24.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="目录">目录</h2>
@@ -54,8 +54,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #4]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4">
+        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4/">
         </link>
         <updated>2020-02-09T03:17:37.000Z</updated>
         <summary type="html"><![CDATA[<p>2020 年题目归档第 4 组。</p>
@@ -77,8 +77,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 斜率优化学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji">
+        <id>https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji/">
         </link>
         <updated>2020-02-07T04:55:43.000Z</updated>
         <summary type="html"><![CDATA[<p>斜率优化是 dp 的一种有力优化方式。常用于处理当 dp 方程 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[i] = max(f[j]+ val(i, j))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span> 中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">val(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 出现同时关于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的项，而无法直接单调队列优化的情况。</p>
@@ -88,8 +88,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #3]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3">
+        <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3/">
         </link>
         <updated>2020-02-06T13:36:39.000Z</updated>
         <summary type="html"><![CDATA[<p>这里是 2020 年第 3 组题目归档。</p>
@@ -111,8 +111,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #2]]></title>
-        <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2</id>
-        <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2">
+        <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2/</id>
+        <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2/">
         </link>
         <updated>2020-02-05T02:22:48.000Z</updated>
         <summary type="html"><![CDATA[<p>2020 年题目归档第 2 组。</p>
@@ -138,8 +138,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 题目归档 #1]]></title>
-        <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji</id>
-        <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji">
+        <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji/">
         </link>
         <updated>2020-02-04T05:49:44.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="目录">目录</h2>
@@ -159,8 +159,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Feb] 网络流基础复习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji">
+        <id>https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2020-feb-wang-luo-liu-ji-chu-fu-xi-bi-ji/">
         </link>
         <updated>2020-02-03T14:56:15.000Z</updated>
         <summary type="html"><![CDATA[<p>尚未全部完成。无零基础内容。</p>
@@ -200,8 +200,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2019 Dec] 欧拉函数基础 学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji">
+        <id>https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji/">
         </link>
         <updated>2020-02-03T14:55:54.000Z</updated>
         <summary type="html"><![CDATA[<p>供复习，无证明过程。</p>
@@ -225,8 +225,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[[2019 Dec] 卷积、反演基础 学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji</id>
-        <link href="https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji">
+        <id>https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2019-dec-juan-ji-fan-yan-ji-chu-xue-xi-bi-ji/">
         </link>
         <updated>2020-02-03T14:55:06.000Z</updated>
         <summary type="html"><![CDATA[<p>供复习，没证明。</p>

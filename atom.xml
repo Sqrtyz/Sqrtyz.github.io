@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-03-24T14:20:44.260Z</updated>
+    <updated>2020-03-30T15:47:55.362Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://sqrtyz.github.io/images/avatar.png</logo>
     <icon>https://sqrtyz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Sqrtyz&apos;s Home</rights>
+    <entry>
+        <title type="html"><![CDATA[[2020 Mar] 题目归档 #6]]></title>
+        <id>https://sqrtyz.github.io/post/2020-mar-ti-mu-gui-dang-5/</id>
+        <link href="https://sqrtyz.github.io/post/2020-mar-ti-mu-gui-dang-5/">
+        </link>
+        <updated>2020-03-11T03:47:59.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="目录">目录</h3>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P3294">[SCOI 2016] 背单词</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3295">[SCOI 2016] 萌萌哒</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4735">Luogu P4735 最大异或和</a></li>
+</ul>
+<p>请点击题目链接查看题目。以下不再提供题目概括。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="目录">目录</h3>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P3294">[SCOI 2016] 背单词</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3295">[SCOI 2016] 萌萌哒</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4735">Luogu P4735 最大异或和</a></li>
+</ul>
+<p>请点击题目链接查看题目。以下不再提供题目概括。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[2020 Mar] NOI Online 2020 游记]]></title>
         <id>https://sqrtyz.github.io/post/2020-mar-noi-online-2020-tg-you-ji/</id>
@@ -201,31 +224,6 @@
 </li>
 <li>
 <p>题目分析</p>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[2019 Dec] 欧拉函数基础 学习笔记]]></title>
-        <id>https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji/</id>
-        <link href="https://sqrtyz.github.io/post/2019-dec-ou-la-han-shu-ji-chu-xue-xi-bi-ji/">
-        </link>
-        <updated>2020-02-03T14:55:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>供复习，无证明过程。</p>
-<h3 id="一-基本知识">一、基本知识</h3>
-<ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 定义为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span> 中与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 互质的整数的个数。两个数互质即最大公因数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<p>例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>2</mn><mo separator="true">,</mo><mi>φ</mi><mo>(</mo><mn>9</mn><mo>)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\varphi(3) = 2,\varphi(9) = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">9</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span></p>
-</li>
-</ul>
-]]></summary>
-        <content type="html"><![CDATA[<p>供复习，无证明过程。</p>
-<h3 id="一-基本知识">一、基本知识</h3>
-<ul>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\varphi(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 定义为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span> 中与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 互质的整数的个数。两个数互质即最大公因数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<p>例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>2</mn><mo separator="true">,</mo><mi>φ</mi><mo>(</mo><mn>9</mn><mo>)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\varphi(3) = 2,\varphi(9) = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord">9</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span></p>
 </li>
 </ul>
 ]]></content>

@@ -1931,12 +1931,12 @@ body {
     }.bg-color {
       background-color: #fff;
     }a {
-      color: #555;
+      color: #495057;
     }
     
     .next-md-body a, .friends-box a  {
-      color: #555;
-      border-bottom: 1px solid #555;
+      color: #495057;
+      border-bottom: 1px solid #495057;
     }a:hover {
       color: #222;
     }
@@ -2000,10 +2000,10 @@ body {
       border-bottom-color: #fc6423;
     }
       .site-meta {
-        background: #000 !important;
+        background: #212529 !important;
       }
       .head-top-line {
-        background: #000 !important;
+        background: #212529 !important;
       }
     .brand {
       background: #000;
@@ -2013,6 +2013,8 @@ body {
     }
     .mist .site-title i {
       background: #FFF;
+    }.box-scale > #landlord {
+      transform: scale(0.85);
     }.box-shadow-wrapper {
       box-shadow: none !important;
     }

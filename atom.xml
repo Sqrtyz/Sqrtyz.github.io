@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-04-08T00:17:55.036Z</updated>
+    <updated>2020-04-09T01:04:16.741Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
@@ -11,21 +11,21 @@
     <icon>https://sqrtyz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Sqrtyz&apos;s Home</rights>
     <entry>
-        <title type="html"><![CDATA[[2020 Apr] XJOI2020 解题报告]]></title>
+        <title type="html"><![CDATA[XJOI2020 解题报告]]></title>
         <id>https://sqrtyz.github.io/post/2020-apr-xjoi2020-xiao-jie/</id>
         <link href="https://sqrtyz.github.io/post/2020-apr-xjoi2020-xiao-jie/">
         </link>
         <updated>2020-04-05T09:47:26.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Apr] Atcoder ABC161 小结]]></title>
+        <title type="html"><![CDATA[Atcoder ABC161 小结]]></title>
         <id>https://sqrtyz.github.io/post/2020-apr-atcoder-abc161-xiao-jie/</id>
         <link href="https://sqrtyz.github.io/post/2020-apr-atcoder-abc161-xiao-jie/">
         </link>
         <updated>2020-04-04T14:15:35.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Mar] 题目归档 #6]]></title>
+        <title type="html"><![CDATA[题目归档 #6]]></title>
         <id>https://sqrtyz.github.io/post/2020-mar-ti-mu-gui-dang-5/</id>
         <link href="https://sqrtyz.github.io/post/2020-mar-ti-mu-gui-dang-5/">
         </link>
@@ -48,14 +48,14 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Mar] NOI Online 2020 游记]]></title>
+        <title type="html"><![CDATA[NOI Online 2020 游记]]></title>
         <id>https://sqrtyz.github.io/post/2020-mar-noi-online-2020-tg-you-ji/</id>
         <link href="https://sqrtyz.github.io/post/2020-mar-noi-online-2020-tg-you-ji/">
         </link>
         <updated>2020-03-07T14:26:40.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 组合数学学习笔记]]></title>
+        <title type="html"><![CDATA[组合数学学习笔记]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu/</id>
         <link href="https://sqrtyz.github.io/post/2020-feb-zu-he-shu-xue-ji-chu/">
         </link>
@@ -74,7 +74,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 题目归档 #5]]></title>
+        <title type="html"><![CDATA[题目归档 #5]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5/</id>
         <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-5/">
         </link>
@@ -97,7 +97,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 题目归档 #4]]></title>
+        <title type="html"><![CDATA[题目归档 #4]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4/</id>
         <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-4/">
         </link>
@@ -120,7 +120,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 斜率优化学习笔记]]></title>
+        <title type="html"><![CDATA[斜率优化学习笔记]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji/</id>
         <link href="https://sqrtyz.github.io/post/2020-feb-xie-lu-you-hua-xue-xi-bi-ji/">
         </link>
@@ -131,7 +131,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 题目归档 #3]]></title>
+        <title type="html"><![CDATA[题目归档 #3]]></title>
         <id>https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3/</id>
         <link href="https://sqrtyz.github.io/post/2020-feb-ti-mu-gui-dang-3/">
         </link>
@@ -154,7 +154,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[[2020 Feb] 题目归档 #2]]></title>
+        <title type="html"><![CDATA[题目归档 #2]]></title>
         <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2/</id>
         <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-gui-dang-2/">
         </link>

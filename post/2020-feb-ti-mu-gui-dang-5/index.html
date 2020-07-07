@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>题目归档 #5 | Sqrtyz&#39;s Home</title>
-<link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1594107678250">
+<link rel="shortcut icon" href="https://sqrtyz.github.io/favicon.ico?v=1594118975172">
 <link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sqrtyz.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="题目归档 #5 | Sqrtyz&#39;s Home - Atom Feed" href="https://sqrtyz.github.io/atom.xml">
@@ -18,7 +18,9 @@
 [POJ2417] Discrete Logging
 [POJ2891] Strange Way to Express Integers
 
-所有题目链接请从「目录」中查看，下面不再提供题意..." />
+
+[POJ2142] The balance
+解..." />
     <meta name="keywords" content="归档" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -28,7 +30,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://sqrtyz.github.io">
-  <img class="avatar" src="https://sqrtyz.github.io/images/avatar.png?v=1594107678250" alt="">
+  <img class="avatar" src="https://sqrtyz.github.io/images/avatar.png?v=1594118975172" alt="">
   </a>
   <h1 class="site-title">
     Sqrtyz&#39;s Home
@@ -113,19 +115,18 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="目录">目录</h2>
+                <h3 id="目录">目录</h3>
 <ul>
 <li><a href="http://poj.org/problem?id=2142">[POJ2142] The balance</a></li>
 <li><a href="http://poj.org/problem?id=2417">[POJ2417] Discrete Logging</a></li>
 <li><a href="http://poj.org/problem?id=2891">[POJ2891] Strange Way to Express Integers</a></li>
 </ul>
-<p>所有题目链接请从「目录」中查看，下面不再提供题意概括。</p>
 <!-- more -->
-<h2 id="poj2142-the-balance">[POJ2142] The balance</h2>
-<h3 id="解题">解题</h3>
+<h3 id="poj2142-the-balance">[POJ2142] The balance</h3>
+<h4 id="解题">解题</h4>
 <p>显然的扩展欧几里得算法。可能刚开始会觉得情况有些多，实际上可以缩减为只有两个情况，然后比较即可。</p>
 <p>解方程 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">ax+by=d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span> ，然后对解出来的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 取绝对值即可。</p>
-<h3 id="代码">代码</h3>
+<h4 id="代码">代码</h4>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
@@ -195,11 +196,11 @@ int main() {
 	return 0;
 }
 </code></pre>
-<h2 id="poj2417-discrete-logging">[POJ2417] Discrete Logging</h2>
-<h3 id="解题-2">解题</h3>
+<h3 id="poj2417-discrete-logging">[POJ2417] Discrete Logging</h3>
+<h4 id="解题-2">解题</h4>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext mathvariant="monospace">BSGS</mtext></mrow><annotation encoding="application/x-tex">\texttt{BSGS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">BSGS</span></span></span></span></span> 算法板子题。没啥可说的。</p>
 <p>只是这道题时空都有点卡就很捞。</p>
-<h3 id="程序">程序</h3>
+<h4 id="程序">程序</h4>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
@@ -257,11 +258,11 @@ int main() {
 	return 0;
 }
 </code></pre>
-<h2 id="poj2891-strange-way-to-express-integers">[POJ2891] Strange Way to Express Integers</h2>
-<h3 id="解题-3">解题</h3>
+<h3 id="poj2891-strange-way-to-express-integers">[POJ2891] Strange Way to Express Integers</h3>
+<h4 id="解题-3">解题</h4>
 <p>扩展中国剩余定理 (EXCRT) 板子题，luogu 上也有对应的板子。</p>
 <p>很恶心的地方就是这道题可能会乘法溢出，所以要上「龟速乘」。</p>
-<h3 id="程序-2">程序</h3>
+<h4 id="程序-2">程序</h4>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
@@ -350,6 +351,8 @@ int main() {
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
+<li>
+<ul>
 <li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
 <li><a href="#poj2142-the-balance">[POJ2142] The balance</a>
 <ul>
@@ -367,6 +370,8 @@ int main() {
 <ul>
 <li><a href="#%E8%A7%A3%E9%A2%98-3">解题</a></li>
 <li><a href="#%E7%A8%8B%E5%BA%8F-2">程序</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

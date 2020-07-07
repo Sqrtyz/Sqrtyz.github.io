@@ -2,21 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sqrtyz.github.io</id>
     <title>Sqrtyz&apos;s Home</title>
-    <updated>2020-04-12T03:08:19.527Z</updated>
+    <updated>2020-07-07T06:50:10.053Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sqrtyz.github.io"/>
     <link rel="self" href="https://sqrtyz.github.io/atom.xml"/>
-    <subtitle>对酒当歌 人生几何</subtitle>
+    <subtitle>「沧海笑 烟雨遥」</subtitle>
     <logo>https://sqrtyz.github.io/images/avatar.png</logo>
     <icon>https://sqrtyz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Sqrtyz&apos;s Home</rights>
-    <entry>
-        <title type="html"><![CDATA[XJOI2020 解题报告]]></title>
-        <id>https://sqrtyz.github.io/post/2020-apr-xjoi2020-xiao-jie/</id>
-        <link href="https://sqrtyz.github.io/post/2020-apr-xjoi2020-xiao-jie/">
-        </link>
-        <updated>2020-04-05T09:47:26.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Atcoder ABC161 小结]]></title>
         <id>https://sqrtyz.github.io/post/2020-apr-atcoder-abc161-xiao-jie/</id>
@@ -166,8 +159,6 @@
 <li>[SCOI2005] 互不侵犯</li>
 <li>CF280C Game on Tree</li>
 </ul>
-<h2 id="apio2015-雅加达的摩天楼">[APIO2015] 雅加达的摩天楼</h2>
-<p>一道算法为最短路的题目，但其实真正的考点是巧妙的建图方式，并且包含类似分块的思想。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>2020 年题目归档第 2 组。</p>
 <h2 id="目录">目录</h2>
@@ -176,8 +167,27 @@
 <li>[SCOI2005] 互不侵犯</li>
 <li>CF280C Game on Tree</li>
 </ul>
-<h2 id="apio2015-雅加达的摩天楼">[APIO2015] 雅加达的摩天楼</h2>
-<p>一道算法为最短路的题目，但其实真正的考点是巧妙的建图方式，并且包含类似分块的思想。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[题目归档 #1]]></title>
+        <id>https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji/</id>
+        <link href="https://sqrtyz.github.io/post/2019-feb-ti-mu-za-ji/">
+        </link>
+        <updated>2020-02-04T05:49:44.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="目录">目录</h2>
+<ul>
+<li>[Luogu P6059] 纯粹容器</li>
+<li>[JSOI2015] Salesman</li>
+<li>[HNOI2007] 梦幻岛宝珠</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="目录">目录</h2>
+<ul>
+<li>[Luogu P6059] 纯粹容器</li>
+<li>[JSOI2015] Salesman</li>
+<li>[HNOI2007] 梦幻岛宝珠</li>
+</ul>
 ]]></content>
     </entry>
 </feed>
